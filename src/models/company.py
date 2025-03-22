@@ -1,13 +1,15 @@
 from datetime import datetime
 
-from peewee import AutoField, CharField, DateTimeField
+from peewee import AutoField
+from peewee import CharField
+from peewee import DateTimeField
 
 from src.models.base import BaseModel
 
 
 class Company(BaseModel):
     class Meta:
-        table_name = 'companies'
+        table_name = "companies"
 
     id = AutoField()
     name = CharField(null=False)
