@@ -1,0 +1,10 @@
+fastapi==0.115.11
+pydantic==2.10.6
+pydantic_core==2.27.2
+uvicorn==0.34.0
+
+peewee==3.14.4
+psycopg2==2.9.10
+peewee-migrations==0.3.32
+
+dotenv==0.9.9
