@@ -11,8 +11,9 @@ services:
     depends_on:
       - db
     volumes:
-      - ./src/app:/code/app
-      - ./src/.env:/code/.env
+      - ./src:/app/src
+      - ./migrations:/app/migrations
+      - ./src/.env:/app/src/.env
   db:
     image: postgres:13
     env_file:
