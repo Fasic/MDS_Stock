@@ -13,7 +13,7 @@ class Stock(BaseModel):
         table_name = "stocks"
 
     id = AutoField()
-    company = ForeignKeyField(Company, backref="stocks")
+    company = ForeignKeyField(Company, backref="stocks", on_delete="CASCADE")
     date = DateField(null=False)
     open = FloatField(null=False)
     high = FloatField(null=False)

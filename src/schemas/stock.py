@@ -27,7 +27,8 @@ class StockUpdate(BaseModel):
 
 
 class StockResponse(BaseModel):
-    company_id: int
+    id: int
+    company: str
     date: date
     open: float
     high: float
