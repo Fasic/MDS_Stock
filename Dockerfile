@@ -14,7 +14,5 @@ EXPOSE 8080
 EXPOSE 5432
 WORKDIR src
 
-RUN pip install -r requirements.txt \
-    && pem migrate
-
+RUN pip install -r requirements.txt
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
