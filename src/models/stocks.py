@@ -1,8 +1,8 @@
 from peewee import AutoField
+from peewee import BigIntegerField
 from peewee import DateField
 from peewee import FloatField
 from peewee import ForeignKeyField
-from peewee import IntegerField
 
 from src.models.base import BaseModel
 from src.models.company import Company
@@ -20,7 +20,7 @@ class Stock(BaseModel):
     low = FloatField(null=False)
     close = FloatField(null=False)
     adj_close = FloatField(null=False)
-    volume = IntegerField(null=False)
+    volume = BigIntegerField(null=False)
 
     def __repr__(self):
         return f"<Stock(id={self.id}, company={self.company.name}, date={self.date}, open={self.open}, high={self.high}, low={self.low}, close={self.close}, adj_close={self.adj_close}, volume={self.volume})>"
