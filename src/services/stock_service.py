@@ -1,9 +1,12 @@
+from datetime import date
 from typing import List
 
 from peewee import DoesNotExist
 
+from src.models import Company
 from src.models.stocks import Stock
 from src.schemas.stock import StockCreate
+from src.schemas.stock import StockData
 from src.schemas.stock import StockResponse
 from src.schemas.stock import StockUpdate
 
@@ -46,3 +49,17 @@ class StockService:
             return True
         except DoesNotExist:
             raise DoesNotExist("Stock not found")
+
+    @staticmethod
+    async def get_stock_analytics(short_name: str, from_date: date, to_date: date):
+        print(from_date, to_date)
+        stocks = (
+            Stock.select(Stock.date, Stock.close, Stock.volume)
+            .join(Company)
+            .where((Company.short_name == short_name) & (Stock.date >= from_date) & (Stock.date <= to_date))
+            .order_by(Stock.date)
+        )
+        stock_list = list(stocks)
+        stocks_data = [StockData.model_validate({**stock.__data__}) for stock in stock_list]
+
+        return {"stocks": stocks_data}

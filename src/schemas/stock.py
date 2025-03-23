@@ -40,3 +40,13 @@ class StockResponse(BaseModel):
     class Config:
         orm_mode: True
         model_validate: True
+
+
+class StockData(BaseModel):
+    date: date
+    close: float
+    volume: int
+
+    class Config:
+        orm_mode: True
+        model_validate: True
