@@ -21,7 +21,7 @@ async def create_stock(stock: StockCreate, service: StockService = Depends()):
 
 @router.get("/", response_model=List[StockResponse])
 async def read_stocks(
-    company_id: Optional[int] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 10, service: StockService = Depends()
+    company_id: Optional[int] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 100, service: StockService = Depends()
 ):
     return await service.get_all_stocks(company_id, page, items_per_page)
 
