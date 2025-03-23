@@ -8,7 +8,7 @@ def stock_one_time_max_profit(stocks: List[StockData]) -> StockMaxProfitData:
     if not stocks:
         return StockMaxProfitData(buy=None, sell=None, profit=0)
     min_stock = stocks[0]
-    max_profit = -1
+    max_profit = 0
     sell_stock = None
     buy_stock = None
     for stock in stocks:
@@ -35,6 +35,6 @@ def stock_max_profit(stocks: List[StockData]) -> float:
             sell = stocks[i]
             balance = balance - buy.close + sell.close
             buying = True
-    if not buying:
-        balance = balance + stocks[i + 1].close
+    if not buying and stocks[i + 1].close > buy.close:
+        balance = balance + stocks[i + 1].close - buy.close
     return balance
