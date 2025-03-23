@@ -8,4 +8,4 @@
 - [] Add API end point for statistics
 - [] Write tests
 - [] Add documentation and update readme
-- [] Fill database with data
+- [x] Fill database with data
