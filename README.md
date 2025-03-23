@@ -31,6 +31,7 @@ You can find the API documentation at:
     - Add better logging
     - Create different environments (development, staging, production, test)
     - Configure the project more complexly
+    - Use more complex database configurations and  better ORM (like SQLAlchemy)
     - Use a smaller docker image size and a multi-stage Dockerfile
 - The `.env` file is included for simplicity in running the project. It should not be part of the Git repository.
 
