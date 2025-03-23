@@ -1,6 +1,16 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
 from .api import router as api_router
+from .setup.logger import setup_logging
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    setup_logging()
+    yield
+
 
 app = FastAPI(
     docs_url="/docs",
@@ -13,6 +23,7 @@ app = FastAPI(
         "name": "Filip Vasic",
         "email": "wasicfilip93@gmail.com",
     },
+    lifespan=lifespan,
 )
 
 app.include_router(api_router)
