@@ -1,4 +1,5 @@
 from datetime import date
+from typing import List
 from typing import Optional
 
 from pydantic import BaseModel
@@ -45,8 +46,24 @@ class StockResponse(BaseModel):
 class StockData(BaseModel):
     date: date
     close: float
-    volume: int
 
     class Config:
         orm_mode: True
         model_validate: True
+
+
+class StockMaxProfitData(BaseModel):
+    buy: Optional[StockData]
+    sell: Optional[StockData]
+    profit: float
+
+
+class StockDataResponse(StockMaxProfitData):
+    max_profit: Optional[float]
+    better_buy: Optional[List[str]]
+    from_to: str
+
+
+class StockAnalytics(StockDataResponse):
+    future_period: StockDataResponse
+    past_period: StockDataResponse
